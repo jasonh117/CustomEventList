@@ -1,0 +1,203 @@
+* {
+    font-family: '{fontName}', sans-serif;
+    color: {{fontColor}};
+    font-size: {fontSize}px;
+    overflow: hidden;
+}
+
+.main-container{
+    display:none;
+    overflow:visible;
+}
+
+.fadeOutClass{
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.event-follower.mask {
+    mask-image: url('{followerImg}');
+    -webkit-mask-image: url('{followerImg}');
+}
+
+.event-cheer.mask{
+    mask-image: url('{cheerImg}');
+    -webkit-mask-image: url('{cheerImg}');
+}
+
+.event-host.mask{
+    mask-image: url('{hostImg}');
+    -webkit-mask-image: url('{hostImg}');
+}
+
+.event-raid.mask{
+    mask-image: url('{raidImg}');
+    -webkit-mask-image: url('{raidImg}');
+}
+
+.event-subscriber.mask{
+    mask-image: url('{subImg}');
+    -webkit-mask-image: url('{subImg}');
+}
+
+.event-tip.mask{
+    mask-image: url('{tipImg}');
+    -webkit-mask-image: url('{tipImg}');
+}
+
+.event-redemption.mask{
+    mask-image: url('{redemptionImg}');
+    -webkit-mask-image: url('{redemptionImg}');
+}
+
+.event-follower.background {
+    background-image: url('{followerImg}');
+}
+
+.event-cheer.background{
+    background-image: url('{cheerImg}');
+}
+
+.event-host.background{
+    background-image: url('{hostImg}');
+}
+
+.event-raid.background{
+    background-image: url('{raidImg}');
+}
+
+.event-subscriber.background{
+    background-image: url('{subImg}');
+}
+
+.event-tip.background{
+    background-image: url('{tipImg}');
+}
+
+.event-redemption.background{
+    background-image: url('{redemptionImg}');
+}
+
+.background{
+    background-size:100% 100%;
+}
+
+
+@keyframes pop-in {
+    0% {
+        width: 0px;
+        height: 0px;
+        background-size: 0px 0px;
+        margin-top: 23px;
+        margin-left: 24px;
+    }
+    50% {
+        width: 0px;
+        height: 0px;
+        background-size: 0px 0px;
+        margin-top: 12px;
+        margin-left: 12px;
+        margin-right: 12px;
+        margin-bottom: 12px
+    }
+    85% {
+        width: calc({fontSize}px - 2px);
+        height: calc({fontSize}px - 2px);
+        background-size: calc({fontSize}px - 2px) calc({fontSize}px - 2px);
+        margin-top: 1px;
+        margin-left: 2px;
+        margin-right: 0px;
+        margin-bottom: 0px
+    }
+    100% {
+        width: calc({fontSize}px + 3px);
+        height: calc({fontSize}px + 3px);
+        background-size: {fontSize}px {fontSize}px;
+        margin-top: 2px;
+        margin-left: 3px;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.event-container {
+    position:relative;
+    width: 100%;
+    height: calc({fontSize}px + 8px);
+    display: flex;
+    justify-content: right;
+    background-color: {{backgroundColor}};
+    border-radius: 14px;
+    margin-top: 3px;
+}
+
+.backgroundsvg{
+    position:absolute;
+    background: url(https://s3.amazonaws.com/cdn.streamelements.com/static/event-list/patterns/{{theme}}.svg);
+    background-size: 10px;
+    width:100%;
+    height:100%;
+    opacity:calc({{backgroundOpacity}}/100);
+    z-index:0;
+}
+
+.event-image {
+    animation: 0.7s pop-in;
+    animation-fill-mode: forwards;
+    object-fit: contain;
+    display: inline-block;
+    width: 20px;
+    background-color:{{iconColor}};
+    position:absolute;
+}
+.mask{
+    -webkit-mask-size: cover;
+    mask-size: cover;
+}
+
+.username-container {
+    animation: 1.2s fade-in;
+    animation-fill-mode: forwards;
+    display: inline-block;
+    font-weight: 400;
+    margin-top: 4px;
+    margin-left: calc({fontSize}px + 8px);
+    position:absolute;
+}
+
+.details-container {
+    position: absolute;
+    width:100%;
+    text-align:right;
+    animation: 1.2s fade-in;
+    animation-fill-mode: forwards;
+    display: inline-block;
+    right: 0px;
+    font-weight: 700;
+    text-align: right;
+    margin-right: 15px;
+    margin-top: 2px;
+}
+
+.badge{
+    height:1.5em;
+    position:relative;
+    top:5px;
+    margin-top:-5px;
+}
