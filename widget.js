@@ -16,7 +16,7 @@ const getBadge = months => {
         if (months < number) break
         badge = number;
     }
-    return `<img alt="${months} months" src="${badges[badge].image_url_2x}" class="badge"/>`;
+    return `<img alt="${months} months" src="${badges[badge].image_url_4x}" class="badge"/>`;
 };
 
 const checkSub = (event) => {
@@ -66,17 +66,22 @@ const parseEvent = (event, isHistorical) => {
         if (!checkSub(event)) return;
 
         let prefix = "Sub ";
-        if (subLabel === "badge") {
-            prefix = getBadge(event.amount);
-        }
-        event.prefix = prefix;
+        const tier = (parseInt(event.tier) >= 2000) ? parseInt(event.tier) : 0;
         if (event.gifted || event.bulkGifted) {
+            if (subLabel === "badge") {
+                prefix = getBadge(tier);
+            }
+            event.prefix = prefix;
             if (event.bulkGifted) {
                 addEvent(event.type, wrapText(fieldData['sub-community-text'], event), event.name, isHistorical);
             } else {
-                addEvent(event.type, wrapText(fieldData['sub-gift-text'], event), event.name, isHistorical);
+                addEvent(event.type, wrapText(fieldData['sub-gift-text'], event), event.sender, isHistorical);
             }
         } else {
+            if (subLabel === "badge") {
+                prefix = getBadge(event.amount + tier);
+            }
+            event.prefix = prefix;
             addEvent(event.type, wrapText(fieldData['sub-text'], event), event.name, isHistorical);
         }
 
