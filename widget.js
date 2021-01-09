@@ -67,7 +67,7 @@ const parseEvent = (event, isHistorical) => {
 
         let prefix = "Sub ";
         const tier = (parseInt(event.tier) >= 2000) ? parseInt(event.tier) : 0;
-        if (event.gifted || event.bulkGifted) {
+        if (event.bulkGifted) {
             if (subLabel === "badge") {
                 prefix = getBadge(tier);
             }
@@ -77,7 +77,7 @@ const parseEvent = (event, isHistorical) => {
             } else {
                 addEvent(event.type, wrapText(fieldData['sub-gift-text'], event), event.sender, isHistorical);
             }
-        } else {
+        } else if (!event.isCommunityGift) {
             if (subLabel === "badge") {
                 prefix = getBadge(event.amount + tier);
             }
