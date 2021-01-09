@@ -144,10 +144,10 @@ window.addEventListener('onEventReceived', function (obj) {
 
 
 window.addEventListener('onWidgetLoad', function (obj) {
-    let recents = obj.detail.recents;
-    recents.sort(function (a, b) {
-        return Date.parse(a.createdAt) - Date.parse(b.createdAt);
-    });
+    // let recents = obj.detail.recents;
+    // recents.sort(function (a, b) {
+    //     return Date.parse(a.createdAt) - Date.parse(b.createdAt);
+    // });
     userCurrency = obj.detail.currency;
     fieldData = obj.detail.fieldData;
     eventsLimit = fieldData.eventsLimit;
@@ -160,18 +160,18 @@ window.addEventListener('onWidgetLoad', function (obj) {
         getBadges(obj.detail.channel.apiToken).then((result) => {
             subLabel = result;
             console.log("We are using: " + result);
-            let eventIndex;
-            for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
-                const event = recents[eventIndex];
-                parseEvent(event, 1)
-            }
+            // let eventIndex;
+            // for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
+            //     const event = recents[eventIndex];
+            //     parseEvent(event, 1)
+            // }
         });
     } else {
-        let eventIndex;
-        for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
-            const event = recents[eventIndex];
-            parseEvent(event, 1)
-        }
+        // let eventIndex;
+        // for (eventIndex = 0; eventIndex < recents.length; eventIndex++) {
+        //     const event = recents[eventIndex];
+        //     parseEvent(event, 1)
+        // }
     }
     setTimeout(() => {
         $(".main-container").show();
